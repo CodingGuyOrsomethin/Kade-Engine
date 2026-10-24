@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#111114;--panel:#1a1a1f;--panel2:#202026;--line:#39383f;--text:#eee9e6;--muted:#aaa3a2;--red:#a9343d;--red2:#d35b62;--gold:#c5a778;--green:#86b6a0}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#2a171b 0,transparent 40%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh}.noise{position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}button,input{font:inherit}button{cursor:pointer}.topbar{height:86px;border-bottom:1px solid #393238;background:#111114d9;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,24px);position:relative;z-index:1}.brand{display:flex;align-items:center;gap:13px}.sigil{width:43px;height:43px;border:1px solid var(--red2);color:var(--red2);display:grid;place-items:center;font-size:27px;font-family:serif;transform:rotate(45deg)}.sigil:first-letter{transform:rotate(-45deg)}.eyebrow,.counter-label,.player-bar label,.player-bar label,.tabs,.outline-button,.primary-button,.text-button,footer,.status,.small-note{font-family:'IBM Plex Mono',monospace;letter-spacing:.09em}.eyebrow{font-size:10px;color:var(--red2);margin:0 0 4px}.brand h1{font:700 25px 'Barlow Condensed',sans-serif;letter-spacing:.12em;margin:0}.outline-button{background:transparent;border:1px solid #625258;color:#e5d5d4;padding:12px 16px;font-size:11px;letter-spacing:.07em}.outline-button:hover{border-color:var(--red2);color:white}main{max-width:1400px;margin:auto;padding:0 5vw}.intro{padding:48px 0 32px;display:flex;justify-content:space-between;align-items:end;gap:24px}.intro h2{font:700 clamp(38px,5vw,56px) 'Barlow Condensed',sans-serif;letter-spacing:.02em;margin:8px 0}.muted{color:var(--muted);font-size:13px;line-height:1.65;margin:0}.deck-counter{width:190px;flex-shrink:0;background:linear-gradient(135deg,#241d20,#19191d);border:1px solid #4b353b;padding:16px 18px}.counter-label{font-size:10px;color:#c9aeb0}.deck-counter strong{display:block;font:700 35px 'Barlow Condensed',sans-serif;margin:4px 0 10px}.deck-counter i{font-style:normal;color:#837b7e;font-size:19px}.counter-track{height:3px;background:#40373b}.counter-track span{display:block;height:100%;width:0;background:var(--red2);transition:width .2s}.player-bar{display:flex;align-items:center;gap:12px;padding:16px;background:#19191d;border:1px solid #343239;flex-wrap:wrap}.player-bar label{font-size:10px;color:#c7babb}.player-bar input,.modal-panel input:not([type=file]){background:#111114;border:1px solid #454148;color:var(--text);padding:11px 12px;outline:none;min-width:180px}.player-bar input:focus,.modal-panel input:focus{border-color:var(--red2)}.primary-button{background:var(--red);border:1px solid #c14b52;color:white;padding:12px 17px;font-size:11px;letter-spacing:.06em}.primary-button:hover{background:#c3424b}.status{font-size:10px;color:var(--muted);letter-spacing:0}.status.ok{color:var(--green)}.tabs{display:flex;gap:28px;border-bottom:1px solid #3b363b;margin-top:35px}.tab{padding:17px 2px 14px;background:transparent;border:0;border-bottom:2px solid transparent;color:#928b8d;font-size:11px}.tab span{margin-left:6px;color:#c2a0a3}.tab.active{color:#f3e8e8;border-bottom-color:var(--red2)}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:27px 0 19px}.section-heading h3,.modal-panel h3{font:600 22px 'Barlow Condensed',sans-serif;letter-spacing:.04em;margin:0 0 4px}.search-wrap{display:flex;align-items:center;gap:8px;border-bottom:1px solid #4c454a;padding:6px 2px;color:#c5a778}.search-wrap input{background:transparent;border:0;outline:none;color:white;font-size:12px;width:180px}.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}.combat-card{position:relative;min-width:0;border:1px solid #3c383d;background:#1a191d;padding:7px;transition:border-color .15s,transform .15s;cursor:pointer}.combat-card:hover{transform:translateY(-3px);border-color:#8c6266}.combat-card.selected{border:2px solid var(--red2);padding:6px;background:#241a1e}.combat-card img{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;background:#101013}.card-meta{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:9px 3px 3px;color:#aaa0a2;font:10px 'IBM Plex Mono',monospace}.card-meta .selected-label{color:#e6a0a3}.card-check{position:absolute;top:12px;right:12px;width:24px;height:24px;display:grid;place-items:center;background:#a9343d;color:white;border:1px solid #ef8c90;font-weight:bold;font-size:14px}.empty-state{text-align:center;padding:62px 20px;border:1px dashed #464047;background:#171619}.empty-symbol{font-size:30px;color:#a24b53;margin-bottom:10px}.empty-state h3{font:600 22px 'Barlow Condensed',sans-serif;margin:0 0 8px}.empty-state p{font-size:12px;color:var(--muted);margin:0}.hidden{display:none!important}.text-button{background:transparent;border:0;color:#c78b8e;font-size:10px}footer{margin-top:60px;border-top:1px solid #373238;padding:19px 0 28px;display:flex;justify-content:space-between;color:#777074;font-size:9px}.modal{position:fixed;inset:0;z-index:5;display:grid;place-items:center;padding:20px}.modal-backdrop{position:absolute;inset:0;background:#050506d9;backdrop-filter:blur(4px)}.modal-panel{position:relative;max-height:90vh;overflow:auto;width:min(520px,100%);background:#1a191e;border:1px solid #584047;box-shadow:0 20px 80px #000;padding:28px}.close{position:absolute;right:16px;top:12px;background:transparent;border:0;color:#d5c8ca;font-size:27px}.modal-panel h2{font:700 31px 'Barlow Condensed',sans-serif;margin:6px 0 8px}.field-label{display:block;font:10px 'IBM Plex Mono',monospace;color:#c5a778;margin:22px 0 8px}.modal-panel input:not([type=file]){width:100%}.upload-zone{margin-top:16px;min-height:140px;border:1px dashed #79545a;background:#211a1e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-align:center;padding:18px}.upload-zone:hover{border-color:var(--red2)}.upload-zone b{font-size:13px}.upload-zone span:last-of-type{font-size:10px;color:var(--muted)}.upload-icon{font-size:28px;color:var(--red2)}.upload-zone input{display:none}.file-list{font:11px 'IBM Plex Mono',monospace;color:#b8adaf;padding:11px 0;overflow-wrap:anywhere}.full{width:100%}.small-note{font-size:10px;line-height:1.7;color:#9a8d90;letter-spacing:0;margin-top:13px}.small-note code{color:#e0c5c6}.admin-divider{height:1px;background:#40383d;margin:25px 0}.manage-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;margin-top:12px}.manage-card{position:relative;border:1px solid #484047;background:#111;padding:4px}.manage-card img{width:100%;aspect-ratio:2/3;object-fit:contain;display:block}.manage-card button{position:absolute;top:4px;right:4px;background:#a9343d;border:0;color:white;width:22px;height:22px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#292327;border:1px solid #79545a;padding:12px 18px;font-size:12px;z-index:10;transition:.2s;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:650px){.topbar{padding:0 18px;height:74px}.brand h1{font-size:20px}.eyebrow{font-size:8px}.sigil{width:34px;height:34px;font-size:21px}.outline-button{padding:10px;font-size:9px}.intro{padding:34px 0 23px;align-items:start;flex-direction:column}.deck-counter{width:100%}.player-bar{align-items:stretch}.player-bar label{width:100%}.player-bar input{flex:1;min-width:0}.status{width:100%}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.section-heading{align-items:start;flex-direction:column}.search-wrap{width:100%}.search-wrap input{width:100%}.tabs{gap:20px}.modal-panel{padding:23px 18px}footer{font-size:8px;gap:12px}}
+
+/* Card front/back flip controls */
+.card-face{position:relative;perspective:900px;transform-style:preserve-3d;animation:card-settle .18s ease-out}.card-face img{transition:transform .18s ease,opacity .12s ease;transform-origin:center;backface-visibility:hidden}.card-face.is-flipped img{animation:card-flip .22s ease-out}.flip-button{position:absolute;right:12px;bottom:47px;width:34px;height:34px;border:1px solid #d98b90;background:#24171b;color:#fff;font-size:22px;line-height:1;border-radius:50%;box-shadow:0 3px 12px #0009;z-index:2;transition:transform .15s,background .15s}.flip-button:hover{background:#a9343d;transform:rotate(25deg)}@keyframes card-flip{0%{transform:rotateY(0deg) scale(.98);opacity:.75}50%{transform:rotateY(85deg) scale(.94);opacity:.6}100%{transform:rotateY(0deg) scale(1);opacity:1}}@keyframes card-settle{from{opacity:.85}to{opacity:1}}
+.upload-pairs{display:grid;gap:12px;margin-top:18px}.upload-pair{border:1px solid #494047;background:#171519;padding:12px}.pair-heading{display:flex;justify-content:space-between;align-items:center;color:#c5a778;font:10px 'IBM Plex Mono',monospace;margin-bottom:10px}.remove-pair{background:transparent;border:0;color:#d88a90;font:10px 'IBM Plex Mono',monospace}.pair-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini-upload{min-width:0;display:flex;flex-direction:column;gap:7px;border:1px dashed #665057;background:#201a1e;padding:10px;cursor:pointer}.mini-upload span{font:10px 'IBM Plex Mono',monospace;color:#e3c8ca}.mini-upload input{width:100%;font-size:10px;color:#aaa}.mini-upload small{font-size:10px;color:#aaa;overflow-wrap:anywhere}.add-pair{width:100%;margin-top:10px;padding:10px}.manage-pair{display:grid;grid-template-columns:1fr 1fr;gap:3px}.manage-pair img{width:100%;aspect-ratio:2/3;object-fit:contain;display:block;background:#09090b}.manage-card{min-width:0}@media(max-width:440px){.pair-inputs{grid-template-columns:1fr}}
+
+/* Zoom in: bottom-left corner of each card, opposite the flip button. */
+.zoom-button{position:absolute;left:12px;bottom:47px;width:34px;height:34px;border:1px solid #d98b90;background:#24171b;color:#fff;font-size:22px;line-height:1;border-radius:50%;box-shadow:0 3px 12px #0009;z-index:2;transition:transform .15s,background .15s;display:grid;place-items:center}
+.zoom-button:hover,.zoom-button:focus-visible{background:#a9343d;transform:scale(1.08)}
+/* Enlarged card: zoom-out remains at the bottom-left, flip remains at bottom-right. */
+body.zoom-open{overflow:hidden}
+.zoom-modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:clamp(14px,3vw,36px);animation:zoom-fade .16s ease-out}
+.zoom-backdrop{position:absolute;inset:0;background:rgba(3,3,6,.91);backdrop-filter:blur(8px);cursor:zoom-out}
+.zoom-stage{position:relative;display:flex;align-items:center;justify-content:center;width:fit-content;max-width:100%;height:fit-content;max-height:calc(100dvh - 28px);animation:zoom-grow .19s ease-out;box-shadow:0 18px 65px #000b}
+.zoom-stage img{display:block;width:auto;height:auto;max-width:min(88vw,680px);max-height:calc(100dvh - 40px);object-fit:contain;border:1px solid #655157;background:#171218}
+.zoom-control{position:absolute;bottom:12px;z-index:2;display:flex;align-items:center;gap:7px;border:1px solid #d98b90;border-radius:6px;background:rgba(25,13,17,.95);color:#fff;padding:9px 12px;font:600 21px/1 'Barlow Condensed',sans-serif;box-shadow:0 3px 15px #000a}
+.zoom-control span{font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.07em}
+.zoom-control:hover,.zoom-control:focus-visible{background:#a9343d}
+.zoom-out{left:12px}.zoom-flip{right:12px}
+.zoom-flipping{animation:card-flip .22s ease-out}
+@keyframes zoom-grow{from{transform:scale(.88);opacity:.6}to{transform:scale(1);opacity:1}}
+@keyframes zoom-fade{from{opacity:0}to{opacity:1}}
+@media(max-width:450px){.zoom-control span{display:none}.zoom-control{padding:10px 13px}.zoom-stage img{max-width:94vw;max-height:90dvh}}
+@media(prefers-reduced-motion:reduce){.zoom-modal,.zoom-stage,.zoom-flipping{animation:none!important}}
+
+/* Battle screen — first iteration: opening hand and preserved draw pile. */
+.battle-tab{color:#e2b4b4}.battle-tab.active{color:#ffdadb;border-color:#d35b62}
+.battle-header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:32px 0 22px;border:1px solid #504047;background:linear-gradient(105deg,#2a1c24,#171519 75%);padding:24px}
+.battle-header h2{margin:4px 0 8px;font:700 clamp(27px,4vw,39px) 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.03em}
+.battle-header .muted{font-size:12px;max-width:600px;line-height:1.6;margin:0}
+.battle-header .primary-button{min-width:140px;white-space:nowrap}
+.battle-header button:disabled{background:#303036;border-color:#55515a;color:#b8a7a9;cursor:default}
+.battle-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:15px 0 30px}
+.battle-stat{padding:16px 20px;border:1px solid #4c3e43;background:#211b20;display:flex;flex-direction:column;gap:4px}
+.battle-stat>span{font:10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#cfb6b3}
+.battle-stat strong{font:700 38px 'Barlow Condensed',sans-serif;color:#f5e2e1}
+.battle-stat small{color:#9f9698;font-size:10px}
+.battle-hand-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:11px;border-bottom:1px solid #513d44;margin-bottom:19px}
+.battle-hand-heading h3{margin:0;font:700 25px 'Barlow Condensed',sans-serif;letter-spacing:.07em}
+.battle-hand-heading span{color:#c4a4a5;font:10px 'IBM Plex Mono',monospace}
+.battle-hand{grid-template-columns:repeat(4,minmax(0,1fr));max-width:990px;margin:auto}
+.battle-card{cursor:default}.battle-card:hover{border-color:#b45b65}
+.battle-hint{text-align:center;margin:22px 0;color:var(--muted);font-size:12px}
+@media(max-width:700px){.battle-header{align-items:stretch;flex-direction:column;padding:18px}.battle-stats{gap:8px}.battle-stat{padding:12px}.battle-stat strong{font-size:30px}.battle-hand{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs{flex-wrap:wrap}.battle-hand-heading span{font-size:9px}}
+
+/* V5 — shared enemy battlefield and GM-only roster */
+.enemy-arena{margin-top:48px;padding-top:25px;border-top:1px solid #554148}
+.enemy-heading{border-bottom-color:#865258}
+.enemy-heading h3{color:#f0c1bd}
+.enemy-empty{display:flex;align-items:center;gap:18px;padding:28px;border:1px dashed #61474c;background:linear-gradient(95deg,#23191e,#171619);margin:17px 0 28px}
+.enemy-empty .enemy-mark{font-size:40px;color:#a55861}
+.enemy-empty strong{font:700 16px 'Barlow Condensed',sans-serif;letter-spacing:.12em}
+.enemy-empty p{font-size:12px;color:#a99fa1;margin:7px 0 0}
+.enemy-battle-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:15px;margin:20px 0}
+.enemy-battle-name span{font:10px 'IBM Plex Mono',monospace;color:#bba4a3}
+.enemy-battle-name strong{font:700 27px 'Barlow Condensed',sans-serif;letter-spacing:.06em;color:#f5caca}
+.enemy-card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));max-width:1050px}
+.enemy-field-card{background:#241a20;border-color:#70464e}
+.enemy-field-card .card-meta span:last-child{color:#e7a8ac}
+.gm-battle-tools{margin-top:39px;border:1px solid #744650;background:linear-gradient(150deg,#271c23,#19191e);padding:24px}
+.gm-tools-top{display:flex;align-items:start;justify-content:space-between;gap:15px}
+.gm-tools-top h3{font:700 28px 'Barlow Condensed',sans-serif;margin:5px 0}
+.gm-tools-top .muted{max-width:550px}
+.gm-select{display:block;width:100%;max-width:560px;background:#131215;border:1px solid #68545b;border-radius:0;color:#f1e9e9;padding:13px;font:12px 'IBM Plex Mono',monospace}
+.gm-select option{background:#1b191d}
+.gm-enemy-roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:13px;margin:17px 0 22px}
+.gm-enemy-roster>.muted{grid-column:1/-1}
+.gm-roster-card{background:#131316;border:1px solid #4f4045;padding:7px}
+.gm-roster-card.deployed{border-color:#d35b62;background:#2b1d22}
+.gm-roster-card>img{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;background:#09090c}
+.gm-roster-actions{display:flex;gap:5px;margin-top:8px}
+.gm-roster-actions button{flex:1;min-width:0;padding:8px 3px;font-size:9px}
+.gm-battle-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+.gm-battle-actions .text-button{margin-left:auto}
+.gm-unlock{width:100%;margin-top:16px}
+.enemy-create{display:flex;gap:8px}
+.enemy-create input{min-width:0;flex:1}
+.enemy-editor-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 8px}
+.enemy-editor-top strong{font:700 21px 'Barlow Condensed',sans-serif;color:#f4ced0}
+.enemy-upload-button{margin-top:13px}
+.enemy-subtitle{margin-top:24px!important}
+.enemy-manage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:9px;margin-top:11px}
+.enemy-manage-grid>.muted{grid-column:1/-1}
+.enemy-manage-card{padding:7px;background:#100e10;border:1px solid #504045}
+.enemy-manage-card button{display:block;width:100%;padding:8px;margin-top:7px;border:1px solid #94525a;background:transparent;color:#efb5b7;font:9px 'IBM Plex Mono',monospace}
+.enemy-manage-card button:hover{background:#742e38;color:white}
+@media(max-width:650px){.gm-battle-tools{padding:15px}.gm-tools-top{flex-direction:column}.enemy-create{flex-direction:column}.enemy-create button{align-self:stretch}.gm-battle-actions>button{flex:1}.enemy-battle-name strong{width:100%}}
+
+/* V6 — compact persistent music control and GM soundtrack settings. */
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.music-button{display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #8a5159;background:#301d23;color:#f6d7d8;padding:11px 13px;white-space:nowrap;letter-spacing:.075em;font:600 10px 'IBM Plex Mono',monospace;min-height:40px}
+.music-button:hover:not(:disabled),.music-button:focus-visible{background:#8b3540;color:white}
+.music-button:disabled{opacity:.5;cursor:not-allowed}
+#musicIcon{font-size:17px;line-height:1}
+.music-current{background:#141216;border:1px solid #564148;padding:12px;margin-top:14px;font:11px 'IBM Plex Mono',monospace;color:#e5c2c4;overflow-wrap:anywhere}
+#musicFile{display:block;max-width:100%;font-size:11px;color:#d3babb;padding:10px;border:1px dashed #76545c;background:#221b20}
+.music-gm-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.music-gm-actions button{flex:1;min-width:145px}
+.music-gm-actions button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:650px){.header-actions{gap:6px}.music-button{font-size:9px;gap:5px;padding:9px 8px}.topbar .brand .eyebrow{display:none}.topbar .outline-button{max-width:120px;line-height:1.4}.music-gm-actions button{min-width:100%}}
+@media(max-width:420px){#musicLabel{max-width:68px;white-space:normal;line-height:1.3}.brand h1{font-size:17px}.brand{gap:6px}.sigil{width:29px;height:29px;font-size:18px}}
+
+/* V7 GM private card vault */
+.gm-vault-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:14px 0 22px}
+.gm-vault-card{border:1px solid rgba(221,180,174,.22);border-radius:9px;background:rgba(25,21,26,.7);padding:10px;transition:border-color .16s,background .16s}
+.gm-vault-card.granted{border-color:rgba(177,113,94,.9);background:rgba(74,30,35,.36)}
+.gm-vault-card .manage-pair{display:flex;gap:5px;align-items:stretch;justify-content:center}
+.gm-vault-card .manage-pair img{width:45%;height:155px;object-fit:contain;border-radius:4px;background:#100f14}
+.gm-vault-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:10px}
+.gm-vault-actions button{font-size:10px;padding:8px;flex:1}
+#gmVaultCount{margin-top:12px}
+
+
+/* V8 — simple selectable card-vs-card battle flow, GM attacks, action feed. */
+.attack-instruction{margin:0 auto 20px;padding:12px 16px;max-width:990px;border:1px solid #644347;background:#271b20;color:#eac0c0;text-align:center;font:600 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.055em}
+.playable-card,.enemy-field-card[data-enemy-target]{cursor:pointer;transition:transform .17s ease,border-color .17s ease,box-shadow .17s ease}
+.playable-card:hover{transform:translateY(-6px)}
+.playable-card.combat-picked,.enemy-field-card.gm-picked{transform:translateY(-15px);border-color:#ffc3a7;box-shadow:0 10px 28px #bd58634d,0 0 0 2px #d77d7e}
+.playable-card.combat-picked .card-meta{background:#783842}
+.enemy-field-card.attack-target{outline:2px solid #e3aa8d;outline-offset:4px;cursor:crosshair}
+.enemy-field-card.attack-target:hover{transform:translateY(-9px);box-shadow:0 8px 20px #b75463a8}
+.enemy-field-card .gm-use-card{position:absolute;left:8px;right:8px;bottom:34px;z-index:3;border:1px solid #e3a1a3;background:#401c29eF;color:#ffe4e5;font:700 10px 'Barlow Condensed',sans-serif;letter-spacing:.07em;padding:9px 4px;cursor:pointer}
+.enemy-field-card .gm-use-card:hover{background:#9d404c}
+.speed-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:6;padding:4px 12px;border:1px solid #dfbd91;background:#18141a;color:#fbe2ba;white-space:nowrap;font:600 11px 'IBM Plex Mono',monospace;box-shadow:0 3px 10px #000a;pointer-events:none}
+.speed-badge strong{font-size:15px;color:#fff}
+.gm-combat-section{border-top:1px solid #795058;margin-top:29px;padding-top:23px}
+.gm-combat-section h3{font:700 24px 'Barlow Condensed',sans-serif;margin:2px 0 10px;letter-spacing:.06em}
+.gm-combat-section .muted{margin-bottom:14px;line-height:1.7}
+.gm-player-hands{display:grid;grid-template-columns:1fr;gap:18px}
+.gm-player-line{padding:14px;border:1px solid #60474e;background:#171318}
+.gm-player-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 0 14px;flex-wrap:wrap}
+.gm-player-heading strong{color:#ffdfda;font:700 22px 'Barlow Condensed',sans-serif}
+.gm-player-heading span{color:#bea9aa;font:11px 'IBM Plex Mono',monospace}
+.gm-hand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:15px}
+.gm-hand-card{position:relative;padding:7px;border:1px solid #604550;background:#211820;min-width:0}
+.gm-hand-card.attack-target{border-color:#efb397;box-shadow:0 0 0 1px #efb397}
+.gm-hand-card>img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#111;display:block}
+.gm-target-button{width:100%;margin-top:8px;min-height:34px;padding:7px 3px;font-size:10px}
+.gm-hand-card.attack-target .gm-target-button{background:#793d43;border-color:#e3a9a9;color:#fff}
+.gm-speed-editor{display:flex;align-items:flex-end;gap:6px;margin-top:8px;flex-wrap:wrap}
+.gm-speed-editor label{font:10px 'IBM Plex Mono',monospace;color:#d6bfc0;flex:1;min-width:66px}
+.gm-speed-editor input{width:100%;display:block;padding:8px 4px;background:#120f14;color:#fff;border:1px solid #71505b;font:14px 'IBM Plex Mono',monospace;max-height:40px}
+.gm-speed-editor button{flex:0 0 auto;padding:8px;font-size:10px}
+.gm-speed-title{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.speed-toggle{display:flex;align-items:center;gap:9px;cursor:pointer;color:#f0c8ca;font:10px 'IBM Plex Mono',monospace}
+.speed-toggle input{width:16px;height:16px;accent-color:#b45365}
+.gm-enemy-speeds{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.gm-speed-line{border:1px solid #584149;padding:8px;background:#141217}
+.gm-speed-line>img{display:block;width:70px;height:90px;object-fit:contain;margin:auto}
+.player-combat-history{margin:36px 0 20px}
+.combat-feed{display:grid;grid-template-columns:1fr;gap:9px;max-height:450px;overflow:auto}
+.combat-event{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:10px 15px;background:#1d171d;border:1px solid #5b404a}
+.combat-event-text{display:flex;flex-direction:column;gap:6px;flex:1;min-width:160px}
+.combat-event-text strong{font:600 13px/1.5 'Barlow Condensed',sans-serif;letter-spacing:.035em;color:#f8dddb}
+.combat-event-text small{color:#bd9da1;font:10px 'IBM Plex Mono',monospace}
+.combat-event-images{display:flex;align-items:center;gap:9px}
+.combat-event-images img{height:90px;width:63px;object-fit:contain;background:#0f0e12;border:1px solid #644b55}
+.combat-arrow{font-size:22px;color:#df9ba2}
+@media(max-width:700px){.gm-hand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.combat-event-images img{height:65px;width:45px}.combat-event{padding:9px}.enemy-field-card .gm-use-card{font-size:9px;padding:7px 2px}}
+@media(prefers-reduced-motion:reduce){.playable-card,.enemy-field-card[data-enemy-target]{transition:none}}
+
+/* V9 — GM-managed round resolution, emotion draw rates, queued discards. */
+.round-banner{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:24px 0 15px;border:1px solid #74434c;background:linear-gradient(105deg,#2f1d24,#19171b)}
+.round-banner-item{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:125px;padding:13px 18px;border-right:1px solid #53353d;gap:5px}
+.round-banner-item span{font:10px 'IBM Plex Mono',monospace;letter-spacing:.07em;color:#d4adb0}
+.round-banner-item strong{font:700 34px 'Barlow Condensed',sans-serif;color:#fff2e9}
+.round-banner-note{flex:1;display:flex;align-items:center;min-width:190px;padding:15px;color:#bfb0b1;font-size:12px;line-height:1.6}
+.round-result{font:11px/1.7 'IBM Plex Mono',monospace;color:#eed1b7;padding:12px 15px;margin:13px 0 18px;background:#211c20;border-left:3px solid #a7786a}
+.round-result:empty{display:none}
+.playable-card.round-pending,.gm-hand-card.round-pending{border-color:#97714c;background:#322820;cursor:default}
+.round-pending .card-face,.gm-hand-card.round-pending>img{filter:saturate(.55) brightness(.65)}
+.playable-card.round-pending:hover{transform:none}
+.enemy-field-card.enemy-round-pending{border-color:#bd935b}
+.enemy-round-pending .card-face{filter:saturate(.65) brightness(.78)}
+.pending-ribbon{position:absolute;top:38%;left:0;right:0;z-index:4;transform:translateY(-50%) rotate(-6deg);background:#321d1bed;border-top:1px solid #dfb27d;border-bottom:1px solid #dfb27d;text-align:center;padding:9px 3px;color:#ffdfa9;text-shadow:0 2px 3px #000;font:700 clamp(9px,1.1vw,12px) 'Barlow Condensed',sans-serif;letter-spacing:.065em;pointer-events:none}
+.gm-hand-card .pending-ribbon{font-size:10px;padding:5px}
+.gm-use-card:disabled{opacity:.55;cursor:not-allowed;background:#3d3536}
+.gm-round-section{border:1px solid #965b54;padding:19px;margin-top:28px;background:linear-gradient(135deg,#392126,#1a181e)}
+.gm-round-section .gm-speed-title{align-items:center}
+.end-round-button{font:700 14px 'IBM Plex Mono',monospace;padding:16px 24px;box-shadow:0 0 0 1px #b86c70,0 8px 20px #0004}
+.end-round-button:disabled{opacity:.6;cursor:wait}
+.emotion-config{display:grid;gap:9px;grid-template-columns:1fr;max-width:350px;margin-top:13px}
+.emotion-config .gm-select{max-width:100%}
+.emotion-config .muted strong{color:#fff0ce}
+.enemy-draw-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.enemy-draw-controls input{width:65px;min-width:0!important;padding:11px;background:#100e13;color:#fff;border:1px solid #80545a;font:14px 'IBM Plex Mono',monospace}
+.draw-specific-button{margin-top:7px;width:100%;border:1px solid #8f7270;background:#352729;color:#ffe5de;font:600 10px 'IBM Plex Mono',monospace;padding:10px 4px}
+.draw-specific-button:hover{background:#7b434c}
+.round-event{border-color:#795549;background:#30231f}
+@media(max-width:700px){.round-banner-item{flex:1;min-width:90px;padding:10px 7px}.round-banner-item span{font-size:9px;text-align:center}.round-banner-note{flex:0 0 100%;border-top:1px solid #53353d;padding:10px 12px;font-size:11px}.end-round-button{width:100%}.enemy-draw-controls .outline-button{flex:1}.gm-round-section{padding:12px}}
+
+/* V10: allow players to retract a queued attack before the GM resolves it. */
+.undo-attack-button{position:absolute;left:50%;bottom:89px;transform:translateX(-50%);z-index:6;max-width:calc(100% - 15px);width:max-content;padding:9px 10px;border:1px solid #f0ae79;background:#3b2423;color:#ffe7c9;box-shadow:0 3px 12px #000c;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.045em;white-space:nowrap;touch-action:manipulation}
+.undo-attack-button:hover,.undo-attack-button:focus-visible{background:#805044;border-color:#ffdbab;outline:2px solid #e4ab74;outline-offset:1px}
+@media(max-width:650px){.undo-attack-button{font-size:9px;padding:9px 6px;bottom:78px}}

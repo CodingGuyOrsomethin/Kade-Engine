@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Moon — Combat Card Hub</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="noise"></div>
+<audio id="lobbyAudio" loop preload="none"></audio>
+<header class="topbar">
+  <div class="brand"><div class="sigil">月</div><div><div class="eyebrow">PROJECT MOON • TABLETOP CAMPAIGN</div><h1>COMBAT CARD HUB</h1></div></div>
+  <div class="header-actions">
+    <button id="musicToggle" class="music-button" type="button" disabled aria-label="Music unavailable" title="Music control"><span id="musicIcon">♪</span><span id="musicLabel">NO MUSIC</span></button>
+    <button id="gmOpen" class="outline-button">GM / UPLOAD CARDS</button>
+  </div>
+</header>
+<main>
+  <section class="intro"><div><p class="eyebrow">LIBRARY ACCESS // AVAILABLE PAGES</p><h2>Build your deck.</h2><p class="muted">Choose up to five cards your GM has unlocked for you. Each player has their own collection and saved deck.</p></div><div class="deck-counter"><span class="counter-label">YOUR DECK</span><strong><span id="deckCount">0</span><i>/ 5</i></strong><div class="counter-track"><span id="counterFill"></span></div></div></section>
+  <section class="player-bar"><label for="playerName">PLAYER IDENTIFIER</label><input id="playerName" maxlength="24" placeholder="Enter your player name" autocomplete="nickname"><button id="loadPlayer" class="primary-button">LOAD DECK</button><span id="playerStatus" class="status">Enter your name to begin.</span></section>
+  <nav class="tabs"><button class="tab active" data-tab="library">CARD LIBRARY <span id="libraryCount">0</span></button><button class="tab" data-tab="deck">MY DECK <span id="deckTabCount">0/5</span></button><button class="tab battle-tab" data-tab="battle">⚔ BATTLE</button></nav>
+  <section id="libraryView"><div class="section-heading"><div><h3>Your unlocked combat cards</h3><p class="muted">Only cards granted to your player are shown here. Select a card to add it. Select it again to remove it.</p></div><div class="search-wrap"><span>⌕</span><input id="search" placeholder="Filter by file name…" aria-label="Filter cards"></div></div><div id="library" class="card-grid"></div><div id="emptyLibrary" class="empty-state hidden"><div class="empty-symbol">▧</div><h3>No cards unlocked yet</h3><p>Load your player name, then ask your GM to unlock cards for you from their private vault.</p></div></section>
+  <section id="deckView" class="hidden"><div class="section-heading"><div><h3>Your selected deck</h3><p class="muted">These are the cards in your current build.</p></div><button id="clearDeck" class="text-button">CLEAR DECK</button></div><div id="deckGrid" class="card-grid"></div><div id="emptyDeck" class="empty-state"><div class="empty-symbol">▤</div><h3>Your deck is empty</h3><p>Open the card library and choose up to five cards.</p></div></section>
+  <section id="battleView" class="hidden" aria-labelledby="battleHeading">
+    <div class="battle-header">
+      <div><p class="eyebrow">BATTLE ARENA // CARD CLASH</p><h2 id="battleHeading">Select. Target. Attack.</h2><p class="muted">Start with four randomized cards from ten copies of each equipped card. Select one hand card, then click an enemy card to use it.</p></div>
+      <button id="startBattle" class="primary-button" type="button">ENTER BATTLE</button>
+    </div>
+    <div id="battleWaiting" class="empty-state"><div class="empty-symbol">⚔</div><h3>Ready to begin?</h3><p>Select at least one card in MY DECK, then enter battle to draw your opening hand.</p></div>
+    <div id="battleActive" class="hidden">
+      <div class="battle-stats"><div class="battle-stat"><span>STARTING POOL</span><strong id="battleTotal">0</strong><small>10 copies per selected card</small></div><div class="battle-stat"><span>CARDS IN HAND</span><strong id="battleHandCount">4</strong><small>Your opening draw</small></div><div class="battle-stat"><span>REMAINING DECK</span><strong id="battleRemaining">0</strong><small>Saved for later turns</small></div></div>
+      <div class="round-banner"><div class="round-banner-item"><span>CURRENT ROUND</span><strong id="battleRound">1</strong></div><div class="round-banner-item"><span>EMOTION LEVEL</span><strong id="battleEmotion">1</strong></div><div class="round-banner-item"><span>NEXT ROUND DRAW</span><strong id="battleNextDraw">1</strong></div><div class="round-banner-note">Unused cards remain in your hand between rounds. Used cards discard when the GM ends the round.</div></div>
+      <div id="battleRoundResult" class="round-result" role="status"></div>
+      <div class="battle-hand-heading"><h3>YOUR HAND</h3><span id="battleDiscarded">0 discarded</span></div>
+      <div id="playerAttackInstruction" class="attack-instruction" role="status">SELECT A CARD IN YOUR HAND, THEN CLICK AN ENEMY CARD TO ATTACK.</div>
+      <div id="battleHand" class="card-grid battle-hand" aria-live="polite"></div>
+      <p class="battle-hint">Used cards are queued until the GM ends the round. Enemy cards you target are also discarded at round end. New player cards are drawn automatically based on emotion level.</p>
+    </div>
+    <section class="enemy-arena" aria-label="Enemy cards visible to everyone">
+      <div class="battle-hand-heading enemy-heading"><h3>ENEMY FIELD</h3><span id="enemyLiveStatus">SHARED WITH EVERY PLAYER</span></div>
+      <div id="enemyArenaEmpty" class="enemy-empty"><span class="enemy-mark">◇</span><div><strong>NO ENEMY CARDS REVEALED</strong><p>The GM can choose an enemy type and put cards on the field.</p></div></div>
+      <div id="enemyArenaPresent" class="hidden">
+        <div class="enemy-battle-name"><span>SELECTED ENEMY</span><strong id="enemyActiveName"></strong><span id="enemyVisibleCount"></span></div>
+        <div id="enemyArenaCards" class="card-grid enemy-card-grid" aria-live="polite"></div>
+      </div>
+      <div id="gmBattleTools" class="gm-battle-tools hidden">
+        <div class="gm-tools-top"><div><p class="eyebrow">GM CONTROL // ENEMY DEPLOYMENT</p><h3>Control the enemy's cards</h3><p class="muted">Only you can see the enemy's full card list. Players see the cards you reveal here.</p></div><button id="gmManageEnemies" class="outline-button" type="button">MANAGE ENEMY TYPES</button></div>
+        <label for="gmEnemySelect" class="field-label">ENEMY TYPE</label>
+        <select id="gmEnemySelect" class="gm-select"><option value="">Choose an enemy…</option></select>
+        <div id="gmEnemyRoster" class="gm-enemy-roster"></div>
+        <div class="gm-battle-actions"><button id="gmRevealAll" type="button" class="primary-button">REVEAL ALL ENEMY CARDS</button><button id="gmHideAll" type="button" class="outline-button">HIDE ALL CARDS</button><button id="gmClearEnemy" type="button" class="text-button">CLEAR FIELD</button></div>
+        <div class="gm-combat-section gm-round-section">
+          <div class="gm-speed-title"><div><p class="eyebrow">GM CONTROL // ROUND FLOW</p><h3>Round <span id="gmRoundNumber">1</span></h3></div><button id="gmEndRound" type="button" class="primary-button end-round-button">END ROUND →</button></div>
+          <p class="muted small">Players can tap UNDO ATTACK on their used cards until you end the round. Ending the round discards the remaining queued player cards and used/targeted enemy cards, then each player draws from their pile. Unused hand cards stay.</p>
+          <div class="emotion-config"><label for="gmEmotionLevel" class="field-label">EMOTION LEVEL</label><select id="gmEmotionLevel" class="gm-select"><option value="1">1 — Draw 1 card</option><option value="2">2 — Draw 2 cards</option><option value="3">3 — Draw 3 cards</option><option value="4">4 — Draw 3 cards</option><option value="5">5 — Draw 3 cards</option></select><p class="muted small">Cards each player draws after ending a round: <strong id="gmDrawRate">1</strong>.</p></div>
+          <div id="gmRoundResult" class="round-result">No rounds have ended yet.</div>
+        </div>
+        <div class="gm-combat-section"><h3>Draw enemy cards</h3><p class="muted small">Enemy draws are unlimited. Choose an enemy type, then draw randomly here or use <b>DRAW THIS CARD</b> in the enemy roster to choose exactly which card to put into play. Drawing another copy never removes an existing one.</p><div class="enemy-draw-controls"><label for="gmEnemyDrawCount" class="field-label">HOW MANY</label><input type="number" id="gmEnemyDrawCount" min="1" max="20" value="1"><button id="gmDrawEnemy" type="button" class="outline-button">＋ DRAW RANDOM ENEMY CARD(S)</button></div></div>
+        <div class="gm-combat-section"><div class="gm-speed-title"><h3>Enemy attacks</h3><button id="gmResetBattle" class="outline-button" type="button">RESET PLAYERS’ HANDS</button></div><p class="muted small">Select <b>ATTACK WITH THIS</b> on a revealed enemy card above. Then click <b>ATTACK THIS CARD</b> on either player's hand below. The attacking enemy card is queued for discard at round end; the targeted player's card remains. Targeted enemy cards are also queued until round end.</p>
+          <div id="gmPlayerHands" class="gm-player-hands"></div>
+        </div>
+        <div class="gm-combat-section"><div class="gm-speed-title"><h3>Card speeds</h3><label class="speed-toggle"><input type="checkbox" id="gmShowSpeeds"> SHOW SPEED NUMBERS ABOVE CARDS</label></div><p class="muted small">Optional. Set a speed (0–99) for an enemy card or a card in a player's hand, then use the checkbox to show or hide speeds on everyone's screen.</p><div id="gmEnemySpeeds" class="gm-enemy-speeds"></div></div>
+        <div class="gm-combat-section"><div class="gm-speed-title"><h3>GM combat feed</h3><button id="gmClearFeed" class="text-button" type="button">CLEAR MESSAGES</button></div><div id="gmCombatFeed" class="combat-feed" aria-live="polite"></div></div>
+      </div>
+    </section>
+    <section class="player-combat-history"><div class="battle-hand-heading"><h3>COMBAT ACTIONS</h3><span>UPDATES LIVE</span></div><div id="playerCombatFeed" class="combat-feed" aria-live="polite"></div></section>
+  </section>
+  <footer><span>THE CITY DOES NOT WAIT.</span><span>COMBAT CARD HUB // V 1.0</span></footer>
+</main>
+<div id="toast" role="status" class="toast"></div>
+<div id="zoomModal" class="zoom-modal hidden" role="dialog" aria-modal="true" aria-label="Enlarged combat card">
+  <div class="zoom-backdrop" data-zoom-close></div>
+  <div class="zoom-stage">
+    <img id="zoomImage" alt="Enlarged combat card">
+    <button id="zoomOut" class="zoom-control zoom-out" type="button" aria-label="Zoom out of card" title="Zoom out">⛶ <span>ZOOM OUT</span></button>
+    <button id="zoomFlip" class="zoom-control zoom-flip" type="button" aria-label="Flip enlarged card" title="Flip card">↻ <span>FLIP</span></button>
+  </div>
+</div>
+<div id="gmModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="gmTitle"><div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="close" data-close aria-label="Close">×</button><p class="eyebrow">RESTRICTED ACCESS</p><h2 id="gmTitle">GM Card Vault</h2><p class="muted">Upload combat cards privately, then grant each player only the cards they earn. No names or stats required on cards.</p><label class="field-label" for="adminPassword">GM PASSWORD</label><input id="adminPassword" type="password" placeholder="Enter GM password"><div id="uploadPairs" class="upload-pairs"></div><button id="addPair" class="outline-button add-pair">＋ ADD ANOTHER CARD</button><div id="fileList" class="file-list">Add a front and back image for each card.</div><button id="uploadButton" class="primary-button full">UPLOAD TO GM VAULT</button><p class="small-note">Default GM password: <code>change-this-password</code>. Change it before sharing the site publicly.</p><div class="admin-divider"></div>
+  <div id="gmVaultSetup" class="hidden">
+    <h3>Private card vault · Player unlocks</h3>
+    <p class="muted small">Players cannot see vault cards until you unlock them. Select one player to decide exactly which cards belong in their personal library. Unchecking a card also unequips it from their deck.</p>
+    <label for="gmPlayerSelect" class="field-label">GIVE CARDS TO PLAYER</label>
+    <select id="gmPlayerSelect" class="gm-select"><option value="">Choose a player…</option></select>
+    <div class="enemy-create"><input id="newPlayerName" maxlength="24" placeholder="Player name (exact spelling)"><button id="gmAddPlayer" class="outline-button" type="button">ADD PLAYER</button></div>
+    <div id="gmVaultCount" class="muted small">Select a player to manage card unlocks.</div>
+    <div id="gmVaultCards" class="gm-vault-grid"></div>
+  </div>
+  <div class="admin-divider"></div>
+  <h3>Enemy types · GM only</h3><p class="muted small">Create an enemy type, upload its own front/back card images, then reveal them from the BATTLE tab. Enemy cards do not appear in players' card library.</p>
+  <button id="gmUnlock" type="button" class="outline-button gm-unlock">UNLOCK GM CONTROLS</button>
+  <div id="enemySetup" class="hidden">
+    <label class="field-label" for="newEnemyName">NEW ENEMY TYPE</label>
+    <div class="enemy-create"><input id="newEnemyName" maxlength="48" placeholder="e.g. The Middle Grunt"><button id="createEnemy" type="button" class="primary-button">CREATE</button></div>
+    <label for="editEnemySelect" class="field-label">EDIT ENEMY TYPE</label><select id="editEnemySelect" class="gm-select"><option value="">Select an enemy…</option></select>
+    <div id="enemyEditor" class="hidden"><div class="enemy-editor-top"><strong id="editEnemyTitle"></strong><button id="deleteEnemy" type="button" class="text-button">DELETE ENEMY TYPE</button></div>
+      <p class="muted small">Upload enemy-only cards. Each card needs both front and back images, just like your player cards.</p>
+      <div id="enemyUploadPairs" class="upload-pairs"></div><button id="addEnemyPair" type="button" class="outline-button add-pair">＋ ADD ANOTHER ENEMY CARD</button>
+      <button id="uploadEnemyButton" type="button" class="primary-button full enemy-upload-button">UPLOAD ENEMY CARD PAIRS</button>
+      <h3 class="enemy-subtitle">Enemy's saved cards</h3><div id="enemyManageCards" class="enemy-manage-grid"></div>
+    </div>
+  </div>
+  <div id="gmMusicSetup" class="hidden">
+    <div class="admin-divider"></div><h3>Lobby background music</h3>
+    <p class="muted small">Upload your own lobby track. It loops across the website, and every player has their own mute button at the top. MP3 recommended; max 40 MB.</p>
+    <div id="currentMusic" class="music-current">No music uploaded.</div>
+    <label for="musicFile" class="field-label">AUDIO FILE</label>
+    <input id="musicFile" type="file" accept=".mp3,.ogg,.wav,.m4a,audio/mpeg,audio/ogg,audio/wav,audio/mp4">
+    <div class="music-gm-actions"><button id="uploadMusicButton" type="button" class="primary-button">UPLOAD / REPLACE MUSIC</button><button id="removeMusicButton" type="button" class="outline-button">REMOVE MUSIC</button></div>
+    <p class="small-note">Browsers may block automatic playback; if so, players click PLAY MUSIC once. Make sure you have permission to share the audio with your group.</p>
+  </div>
+  <div class="admin-divider"></div><h3>Delete cards from vault</h3><p class="muted small">Deleting a card removes it permanently from all players. To only remove access for one player, use the unlock controls above.</p><div id="manageCards" class="manage-cards"></div></div></div>
+<script src="/app.js"></script>
+</body></html>

@@ -1,0 +1,20 @@
+{
+  "name": "project-moon-card-hub",
+  "version": "1.1.0",
+  "description": "Project Moon Card Hub V10 with Supabase persistence for Render",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "migrate": "node scripts/migrate.js",
+    "test": "node tests/supabase-ready.test.js && node tests/storage-cloud.test.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "@supabase/supabase-js": "^2.57.0",
+    "dotenv": "^16.6.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
